@@ -52,6 +52,42 @@ public class LinkedList<E> implements ListI<E> {
         return
     }
 
+    public E removeFirst() {
+        if (head == null) {
+            return null;
+        }
+        E tmp = head.data;
+
+        if (head == tail) {   //요소가 하나만 있을 때
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+        }
+
+        currentSize--;
+        return tmp;
+    }
+
+    public E removeLast() {
+        if (head == null) 
+            return null;
+        if (head == tail)
+            return removeFirst();
+
+        Node<E> current = head;
+        Node<E> previous = null;
+        while (current != tail) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        tail = previous;
+        
+        currentSize--;
+        return current.data;
+    }
+
     /*
     // 시간복잡도 : O(n) 
     public void addLast(E obj) {
