@@ -52,6 +52,9 @@ public class LinkedList<E> implements ListI<E> {
         return
     }
 
+    /**
+     * RemoveFirst / RemoveLast
+     */
     public E removeFirst() {
         if (head == null) {
             return null;
@@ -88,23 +91,52 @@ public class LinkedList<E> implements ListI<E> {
         return current.data;
     }
 
-    /*
-    // 시간복잡도 : O(n) 
-    public void addLast(E obj) {
-        Node<E> node = new Node<E>(obj);
-        // 리스트가 비어있는 경우 처리
-        if (head == null) {
-            head = node;
-            currentSize++;
-            return;
-        }
+    /**
+     * Remove 와 Find
+     */
+    public E remove(E obj) {
+        Node<E> current = head;
+        Node<E> previous = null;
+        while (current != null) {
+            if (((Comparable<E>) obj).compareTo(current.data) == 0) {
+                if (current == head) 
+                    return removeFirst();
+                if (current == tail)
+                    return removeLast();
 
-        Node<E> tmp = head;
-        while (tmp.next != null) {
-            tmp = tmp.next
+                currentSize--;
+                previous.next = current.next;
+                return current.data;
+            }
+            previous = current;
+            current = current.next;
         }
-        tmp.next = node;
-        currentSize++;
+        return null;
     }
-    */
+
+    public boolean contains(E obj) {
+        Node<E> current = head;
+        while (current != null) {
+            if (((Comparable<E)obj).compareTo(current.data) == 0) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /**
+     * Peek 메소드
+     */
+    public E peekFirst() {
+        if (head == null)
+            return null;
+        return head.data;
+    }
+
+    public E peekLast() {
+        if (tail == null)
+            return null;
+        return tail.data; 
+    }
 }  

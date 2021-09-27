@@ -37,7 +37,7 @@
 
 
 
-**1.4 addFirst 메소드**
+**1-4. addFirst 메소드**
 
 - 추가된 요소가 기존 첫 번째 노드를 가리키게 한 뒤,  head가 추가된 노드를 가리키도록 작업한다.
 
@@ -48,7 +48,7 @@
 
 
 
-**1.5 addLast 메소드**
+**1-5. addLast 메소드**
 
 - 연결리스트의 마지막을 가리키는 임시 포인터를 사용한다.
 
@@ -57,18 +57,38 @@
 
 <br/>
 
-**1.6 removeFirst 메소드**
+**1-6. removeFirst 메소드**
 
 - **[생각해보기]** tail 포인터의 단점은 무엇입니까?
   - 효율성은 높아지지만 요소가 한 개일 때 구현이 복잡해질 수 있다.
 
+<br/>
 
-
-**1.7 removeLast 메소드**
+**1-7. removeLast 메소드**
 
 - 임시 포인터 current와 previous를 활용해 마지막 - 1 노드를 구함.
 
 <br/>
 
+**1-8. remove와 fiind**
 
+- Comaparable  인터페이스를 사용하여 제거 요소 위치를 찾는다.
 
+- **[생각해보기]** remove와 removeFirst, removeLast 메소드의 차이점은 무엇인가요?
+  - removeLast 메소드에서는 current.next == null 또는 tail == current 조건을 사용하여 마지막 노드 이전 노드의 위치를 알아내어 마지막 요소를 제거한다. 그러나 remove에서 current는 while (current != null) 조건을 사용하여 객체 비교가 이루어진 후에 while문이 끝나도록 작업한다.
+- **[생각해보기]** 리스트가 비어있는 경우에 remove를 사용하면 어떻게 되나요?
+  - current = head로 초기화 되므로, current에 null값이 들어가면서 자동으로 while 조건문 (current != null)에서 걸러지며 제거되지 않고 종료된다.
+
+<br/>
+
+**1-9. peek 메소드**
+
+- 연결리스트 중 하나의 요소를 살펴보는 메소드
+- **[생각해보기]** tmp가 임시 포인터라 할 때, while(tmp.next != null)과 while(tmp != null)의 차이점은 무엇인가요?
+  - tmp.next로 비교할 때는 포인터가 마지막 요소까지 체크, tmp는 마지막 요소를 지난 후 종료된다.
+
+<br/>
+
+**1-10. 연결리스트 테스트**
+
+<br/>
