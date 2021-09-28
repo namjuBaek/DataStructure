@@ -133,10 +133,36 @@ public class LinkedList<E> implements ListI<E> {
             return null;
         return head.data;
     }
-
+ 
     public E peekLast() {
         if (tail == null)
             return null;
         return tail.data; 
+    }
+
+
+    /**
+     * Interator infterface
+     */
+    class IteratorHelper implements Interator<E> {
+        Node<E> index;
+        public IteratorHelper() {
+            index = head;
+        }
+
+        public boolean hasNext() {
+            return (index != null);
+        }
+
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException;
+            }
+                
+
+            E val = index.data;
+            index = index.next;
+            return val;
+        }
     }
 }  
